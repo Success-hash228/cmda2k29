@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CMDA 2k29 UI — Class Directory</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  --green:#1A6B3A;
+  --green-dark:#0F3D22;
+  --green-mid:#2A8A4E;
+  --white:#FFFFFF;
+  --cream:#F6FAF7;
+  --gold:#C9922A;
+  --muted:#5A7060;
+  --border:#D0E4D8;
+  --card:#FFFFFF;
+  --r:10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--green-dark);min-height:100vh}
+
+/* HEADER */
+.site-header{
+  background:var(--green-dark);
+  color:white;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 16px rgba(0,0,0,0.3);
+  flex-wrap:wrap;gap:8px;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo-circle{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green),var(--green-mid));
+  border:2px solid rgba(255,255,255,0.3);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.logo-circle svg{width:22px;height:22px;fill:white}
+.brand-text .title{font-family:'DM Serif Display',serif;font-size:15px;line-height:1.1;letter-spacing:0.2px}
+.brand-text .sub{font-size:10px;opacity:0.6;letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+.nav-tabs{display:flex;gap:2px}
+.nav-tab{
+  background:transparent;border:none;
+  color:rgba(255,255,255,0.6);
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:500;
+  padding:7px 12px;border-radius:6px;cursor:pointer;
+  transition:all 0.2s;letter-spacing:0.2px;
+}
+.nav-tab:hover{background:rgba(255,255,255,0.1);color:white}
+.nav-tab.active{background:var(--green-mid);color:white}
+
+/* VIEWS */
+.view{display:none}.view.active{display:block}
+
+/* HERO */
+.hero{
+  background:linear-gradient(160deg,var(--green-dark) 0%,var(--green) 60%,var(--green-mid) 100%);
+  color:white;padding:56px 20px 48px;text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cross-accent{
+  position:absolute;top:20px;right:30px;opacity:0.08;
+  font-size:120px;line-height:1;font-family:'DM Serif Display',serif;
+  color:white;user-select:none;
+}
+.hero-eyebrow{
+  font-family:'Space Mono',monospace;font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);margin-bottom:8px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px;padding:5px 14px;
+  font-size:11px;color:rgba(255,255,255,0.8);
+  margin-bottom:20px;letter-spacing:0.5px;
+}
+.hero h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(28px,6vw,48px);line-height:1.1;margin-bottom:12px;
+}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,0.75)}
+.motto{
+  font-size:13px;
+  font-style:italic;
+  color:rgba(255,255,255,0.65);
+  margin-bottom:6px;
+  letter-spacing:0.3px;
+}
+.scripture{
+  font-family:'Space Mono',monospace;
+  font-size:10px;letter-spacing:1px;
+  color:rgba(255,255,255,0.4);margin-bottom:32px;
+  text-transform:uppercase;
+}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{
+  background:white;color:var(--green-dark);border:none;
+  padding:13px 28px;font-family:'Inter',sans-serif;
+  font-size:14px;font-weight:700;border-radius:8px;
+  cursor:pointer;transition:all 0.2s;letter-spacing:0.2px;
+}
+.btn-primary:hover{background:var(--cream);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+.btn-outline{
+  background:transparent;color:white;
+  border:1.5px solid rgba(255,255,255,0.4);
+  padding:12px 24px;font-family:'Inter',sans-serif;
+  font-size:14px;font-weight:500;border-radius:8px;
+  cursor:pointer;transition:all 0.2s;
+}
+.btn-outline:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.7)}
+.hero-stats{display:flex;justify-content:center;gap:40px;position:relative}
+.stat{text-align:center}
+.stat .num{font-family:'Space Mono',monospace;font-size:26px;font-weight:700;color:white;display:block}
+.stat .label{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;margin-top:2px}
+.stat-divider{width:1px;background:rgba(255,255,255,0.15);align-self:stretch}
+
+/* INFO STRIP */
+.info-strip{
+  background:var(--green);color:white;
+  display:flex;gap:0;overflow:hidden;
+}
+.strip-item{
+  flex:1;padding:18px 20px;text-align:center;
+  border-right:1px solid rgba(255,255,255,0.15);
+  font-size:12px;line-height:1.5;
+}
+.strip-item:last-child{border-right:none}
+.strip-item .label{opacity:0.55;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.strip-item .val{font-weight:600;font-size:13px}
+@media(max-width:600px){.info-strip{flex-direction:column}.strip-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.15)}}
+
+/* FORM */
+.form-container{max-width:660px;margin:40px auto;padding:0 16px 60px}
+.form-section-title{
+  font-family:'DM Serif Display',serif;font-size:20px;
+  color:var(--green);margin:32px 0 16px;
+  padding-bottom:8px;border-bottom:2px solid var(--green);
+  display:flex;align-items:center;gap:8px;
+}
+.form-card{
+  background:white;border-radius:var(--r);padding:24px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  display:flex;flex-direction:column;gap:18px;margin-bottom:4px;
+  border-top:3px solid var(--green);
+}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.field-row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{
+  font-size:11px;font-weight:700;color:var(--muted);
+  letter-spacing:0.8px;text-transform:uppercase;
+}
+.field label .req{color:var(--gold);margin-left:2px}
+.field input,.field select,.field textarea{
+  border:1.5px solid var(--border);border-radius:7px;
+  padding:10px 13px;font-family:'Inter',sans-serif;
+  font-size:14px;color:var(--green-dark);background:var(--cream);
+  transition:border-color 0.2s,box-shadow 0.2s;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(26,107,58,0.12);background:white;
+}
+.field textarea{resize:vertical;min-height:85px}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A7060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px;background-color:var(--cream)}
+
+.photo-zone{
+  border:2px dashed var(--border);border-radius:var(--r);
+  padding:28px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--cream);
+}
+.photo-zone:hover{border-color:var(--green);background:rgba(26,107,58,0.04)}
+.photo-zone .icon{font-size:32px;margin-bottom:8px}
+.photo-zone p{font-size:13px;color:var(--muted)}
+.photo-zone strong{color:var(--green)}
+.photo-preview{width:90px;height:90px;border-radius:50%;object-fit:cover;margin:10px auto;display:none;border:3px solid var(--green)}
+
+.submit-area{text-align:center;margin-top:28px}
+.submit-area .btn-submit{
+  background:var(--green);color:white;border:none;
+  padding:15px 0;width:100%;max-width:300px;
+  font-family:'Inter',sans-serif;font-size:15px;font-weight:700;
+  border-radius:8px;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px;
+}
+.submit-area .btn-submit:hover{background:var(--green-dark);transform:translateY(-1px)}
+.submit-area p{font-size:11px;color:var(--muted);margin-top:10px;letter-spacing:0.2px}
+
+.success-banner{
+  background:linear-gradient(135deg,var(--green-dark),var(--green));
+  color:white;padding:40px 28px;border-radius:var(--r);
+  text-align:center;margin-top:16px;display:none;
+}
+.success-banner .icon{font-size:52px;margin-bottom:12px}
+.success-banner h3{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:8px}
+.success-banner p{opacity:0.8;font-size:14px;line-height:1.6}
+.success-banner .verse{
+  margin-top:16px;font-style:italic;opacity:0.6;font-size:12px;
+  border-top:1px solid rgba(255,255,255,0.2);padding-top:14px;
+}
+
+/* GFORM BANNER */
+.gform-banner{
+  background:linear-gradient(135deg,#0F3D22,var(--green));
+  color:white;border-radius:var(--r);padding:24px 28px;
+  margin-bottom:28px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.gform-banner h3{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:6px}
+.gform-banner p{font-size:13px;opacity:0.75;line-height:1.6;margin-bottom:14px}
+.gform-input-row{display:flex;gap:10px;flex-wrap:wrap}
+.gform-input{
+  flex:1;min-width:200px;
+  border:1.5px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.1);
+  color:white;border-radius:7px;padding:10px 14px;
+  font-family:'Inter',sans-serif;font-size:13px;outline:none;
+}
+.gform-input::placeholder{color:rgba(255,255,255,0.45)}
+.gform-input:focus{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.15)}
+.btn-connect{
+  background:white;color:var(--green-dark);border:none;
+  padding:10px 20px;border-radius:7px;font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;
+}
+.btn-connect:hover{background:var(--cream)}
+.gform-note{font-size:11px;opacity:0.5;margin-top:8px}
+
+/* DIRECTORY */
+.dir-container{max-width:1080px;margin:0 auto;padding:36px 16px 60px}
+.dir-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.dir-header h2{font-family:'DM Serif Display',serif;font-size:26px;color:var(--green)}
+.dir-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.search-box{
+  border:1.5px solid var(--border);border-radius:7px;
+  padding:9px 14px;font-family:'Inter',sans-serif;
+  font-size:13px;width:220px;outline:none;transition:border-color 0.2s;background:white;
+}
+.search-box:focus{border-color:var(--green)}
+.btn-download{
+  background:var(--green);color:white;border:none;
+  padding:9px 16px;border-radius:7px;font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.btn-download:hover{background:var(--green-dark)}
+.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.member-card{
+  background:white;border-radius:var(--r);overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;
+}
+.member-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,0.12)}
+.card-top{background:linear-gradient(135deg,var(--green-dark),var(--green));height:68px;position:relative}
+.card-avatar{
+  width:68px;height:68px;border-radius:50%;
+  border:3px solid white;position:absolute;bottom:-26px;left:18px;
+  background:var(--green-mid);display:flex;align-items:center;justify-content:center;
+  font-family:'DM Serif Display',serif;font-size:20px;color:white;overflow:hidden;
+}
+.bday-ribbon{
+  position:absolute;top:8px;right:8px;
+  background:var(--gold);color:white;
+  font-size:9px;font-weight:700;padding:3px 8px;
+  border-radius:20px;letter-spacing:0.5px;display:none;
+}
+.card-body{padding:34px 18px 18px}
+.card-name{font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:2px}
+.card-nick{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:10px}
+.card-meta span{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px;margin-bottom:4px}
+.empty-state{text-align:center;padding:72px 20px;color:var(--muted);grid-column:1/-1}
+.empty-state .icon{font-size:52px;margin-bottom:14px}
+.empty-state h3{font-family:'DM Serif Display',serif;font-size:20px;color:var(--green);margin-bottom:6px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal{background:white;border-radius:14px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-banner{background:linear-gradient(135deg,var(--green-dark),var(--green));height:110px;border-radius:14px 14px 0 0;position:relative}
+.modal-av{
+  width:90px;height:90px;border-radius:50%;border:4px solid white;
+  position:absolute;bottom:-32px;left:24px;overflow:hidden;
+  background:var(--green-mid);display:flex;align-items:center;justify-content:center;
+  font-family:'DM Serif Display',serif;font-size:28px;color:white;
+}
+.modal-close{
+  position:absolute;top:12px;right:12px;
+  background:rgba(255,255,255,0.2);border:none;color:white;cursor:pointer;
+  width:28px;height:28px;border-radius:50%;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-body{padding:44px 24px 24px}
+.modal-name{font-family:'DM Serif Display',serif;font-size:24px}
+.modal-nick{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:18px}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.mf label{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);font-weight:700}
+.mf p{font-size:13px;color:var(--green-dark);margin-top:2px;font-weight:500}
+.mf-full{margin-top:14px}
+.mf-full label{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);font-weight:700}
+.mf-full p{font-size:13px;line-height:1.6;color:var(--green-dark);margin-top:4px}
+
+/* SETUP GUIDE */
+.guide-container{max-width:740px;margin:40px auto;padding:0 16px 60px}
+.guide-container h2{font-family:'DM Serif Display',serif;font-size:30px;color:var(--green);margin-bottom:6px}
+.guide-container>.subtitle{color:var(--muted);font-size:14px;margin-bottom:30px;line-height:1.6}
+.step-block{
+  background:white;border-radius:var(--r);padding:22px 24px;
+  margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border-left:4px solid var(--green);
+}
+.step-num{
+  font-family:'Space Mono',monospace;font-size:10px;color:var(--green);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;font-weight:700;
+}
+.step-block h3{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--green-dark)}
+.step-block p,.step-block li{font-size:13px;color:var(--muted);line-height:1.7}
+.step-block ul{padding-left:16px;margin-top:6px}
+.code-block{
+  background:#0F1F15;color:#A8E6C3;
+  font-family:'Space Mono',monospace;font-size:11px;
+  padding:16px;border-radius:8px;margin-top:12px;overflow-x:auto;
+  white-space:pre;line-height:1.7;max-height:340px;
+}
+.copy-btn{
+  background:var(--green);color:white;border:none;
+  padding:8px 16px;border-radius:6px;font-size:12px;cursor:pointer;
+  margin-top:10px;font-family:'Inter',sans-serif;font-weight:600;
+  transition:background 0.2s;
+}
+.copy-btn:hover{background:var(--green-dark)}
+.alert-box{
+  background:rgba(26,107,58,0.08);border:1px solid rgba(26,107,58,0.2);
+  border-radius:8px;padding:14px 16px;margin-top:10px;font-size:13px;color:var(--green-dark);line-height:1.6;
+}
+.alert-box strong{color:var(--green)}
+
+/* FOOTER */
+footer{
+  background:var(--green-dark);color:rgba(255,255,255,0.4);
+  text-align:center;padding:20px;font-size:11px;letter-spacing:0.5px;line-height:1.8;
+}
+footer strong{color:rgba(255,255,255,0.7)}
+footer em{font-style:italic;color:rgba(255,255,255,0.35)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="brand">
+    <div class="logo-circle">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+        <path d="M11 5h2v2h-2zM11 17h2v2h-2z" opacity="0.5"/>
+        <path d="M12 1a11 11 0 1 0 0 22A11 11 0 0 0 12 1zm0 2a9 9 0 1 1 0 18A9 9 0 0 1 12 3z" opacity="0.4"/>
+        <text x="12" y="15.5" text-anchor="middle" font-size="9" font-family="serif" font-weight="bold">✝</text>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="title">CMDA 2k29 · University of Ibadan</div>
+      <div class="sub">Christian Medical & Dental Association</div>
+    </div>
+  </div>
+  <nav class="nav-tabs">
+    <button class="nav-tab active" onclick="showView('home')">Home</button>
+    <button class="nav-tab" onclick="showView('form')">Join Directory</button>
+    <button class="nav-tab" onclick="showView('directory')">Members</button>
+    <button class="nav-tab" onclick="showView('setup')">Setup Guide</button>
+  </nav>
+</header>
+
+<!-- HOME -->
+<div id="view-home" class="view active">
+  <div class="hero">
+    <div class="cross-accent">✝</div>
+    <div class="hero-eyebrow">CMDA Nigeria — Students Arm · UI Chapter</div>
+    <div class="hero-badge">✝ 2k29 Class Directory</div>
+    <h1>One Family.<br><em>One Purpose.</em></h1>
+    <div class="motto">"Caring for the whole man: spirit, soul and body"</div>
+    <div class="scripture">1 THESSALONIANS 5:23</div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showView('form')">Add My Details</button>
+      <button class="btn-outline" onclick="showView('directory')">Browse Members</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="num" id="member-count">0</span><span class="label">Members</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="num" id="state-count">0</span><span class="label">States</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="num" id="bday-count">0</span><span class="label">Birthdays Soon</span></div>
+    </div>
+  </div>
+  <div class="info-strip">
+    <div class="strip-item"><div class="label">Founded</div><div class="val">16 Sept 1981</div></div>
+    <div class="strip-item"><div class="label">Set Year</div><div class="val">2k29</div></div>
+    <div class="strip-item"><div class="label">Institution</div><div class="val">University of Ibadan</div></div>
+    <div class="strip-item"><div class="label">UI Motto</div><div class="val">Recte Sapere Fons</div></div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div id="view-form" class="view">
+  <div class="form-container">
+
+    <!-- Google Form Banner -->
+    <div class="gform-banner">
+      <h3>📎 Link Your Google Form</h3>
+      <p>If you have created a Google Form for this directory, paste the shareable link below. Members who fill your Google Form will automatically appear in the Members tab in real-time.</p>
+      <div class="gform-input-row">
+        <input class="gform-input" id="gform-url" type="url" placeholder="https://forms.gle/your-form-link"/>
+        <button class="btn-connect" onclick="saveGformLink()">Connect Form</button>
+      </div>
+      <div class="gform-note" id="gform-status">No Google Form connected yet. Use the Setup Guide tab to create one.</div>
+    </div>
+
+    <div id="form-success" class="success-banner">
+      <div class="icon">🎉</div>
+      <h3>You're in the Directory!</h3>
+      <p>Your details have been saved and are now accessible to CMDA 2k29 UI executives.</p>
+      <div class="verse">"God made man — spirit, soul, and body. He has called us to care for the whole man." — 1 Thess. 5:23</div>
+    </div>
+
+    <div id="main-form">
+      <div class="form-section-title">👤 Personal Information</div>
+      <div class="form-card">
+        <div class="field-row">
+          <div class="field"><label>Full Name <span class="req">*</span></label><input type="text" id="f-fullname" placeholder="e.g. Adebayo Okonkwo"/></div>
+          <div class="field"><label>Nickname / Alias</label><input type="text" id="f-nickname" placeholder="e.g. Bayo, Doc Slim"/></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="f-dob"/></div>
+          <div class="field"><label>Gender <span class="req">*</span></label>
+            <select id="f-gender"><option value="">— Select —</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select>
+          </div>
+        </div>
+        <div class="field"><label>Marital Status</label>
+          <select id="f-marital"><option value="">— Select —</option><option>Single</option><option>In a relationship</option><option>Engaged</option><option>Married</option></select>
+        </div>
+      </div>
+
+      <div class="form-section-title">📞 Contact Details</div>
+      <div class="form-card">
+        <div class="field-row">
+          <div class="field"><label>Phone Number <span class="req">*</span></label><input type="tel" id="f-phone" placeholder="+234 800 000 0000"/></div>
+          <div class="field"><label>Email Address <span class="req">*</span></label><input type="email" id="f-email" placeholder="you@example.com"/></div>
+        </div>
+        <div class="field"><label>WhatsApp Number (if different)</label><input type="tel" id="f-whatsapp" placeholder="+234 ..."/></div>
+        <div class="field"><label>Emergency Contact (Name & Phone)</label><input type="text" id="f-emergency" placeholder="Mrs. Okonkwo — +234 802 000 0000"/></div>
+      </div>
+
+      <div class="form-section-title">📍 Origin & Location</div>
+      <div class="form-card">
+        <div class="field-row">
+          <div class="field"><label>State of Origin <span class="req">*</span></label>
+            <select id="f-state"><option value="">— Select State —</option>
+              <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option>
+              <option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option>
+              <option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option>
+              <option>Ekiti</option><option>Enugu</option><option>FCT — Abuja</option><option>Gombe</option>
+              <option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option>
+              <option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+              <option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option>
+              <option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option>
+              <option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+              <option>Zamfara</option>
+            </select>
+          </div>
+          <div class="field"><label>LGA of Origin</label><input type="text" id="f-lga" placeholder="e.g. Ibadan North"/></div>
+        </div>
+        <div class="field"><label>Current City / Location</label><input type="text" id="f-location" placeholder="e.g. Ibadan, Oyo State"/></div>
+      </div>
+
+      <div class="form-section-title">🎓 Academic & Career</div>
+      <div class="form-card">
+        <div class="field-row">
+          <div class="field"><label>Matric Number</label><input type="text" id="f-matric" placeholder="e.g. 200901234"/></div>
+          <div class="field"><label>Hall of Residence</label><input type="text" id="f-hall" placeholder="e.g. Independence Hall"/></div>
+        </div>
+        <div class="field"><label>Specialty / Career Aspiration</label><textarea id="f-aspiration" placeholder="I want to be a Cardiothoracic Surgeon and establish a world-class cardiac centre in Nigeria..."></textarea></div>
+        <div class="field"><label>Fun Fact / Hobbies</label><textarea id="f-fun" placeholder="Tell your CMDA family something interesting about you!" style="min-height:65px;"></textarea></div>
+      </div>
+
+      <div class="form-section-title">📸 Profile Photo</div>
+      <div class="form-card">
+        <div class="photo-zone" onclick="document.getElementById('photo-input').click()">
+          <div class="icon">🖼️</div>
+          <img class="photo-preview" id="photo-preview" src="" alt=""/>
+          <p><strong>Click to upload</strong> your photo<br><span style="font-size:11px;">JPG or PNG · Max 5MB</span></p>
+        </div>
+        <input type="file" id="photo-input" accept="image/*" style="display:none;" onchange="previewPhoto(event)"/>
+      </div>
+
+      <div class="submit-area">
+        <button class="btn-submit" onclick="submitForm()">✝ Save My Profile to the Directory</button>
+        <p>🔒 Confidential — accessible only to CMDA 2k29 UI executives.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DIRECTORY -->
+<div id="view-directory" class="view">
+  <div class="dir-container">
+    <div class="dir-header">
+      <h2>Class Members</h2>
+      <div class="dir-controls">
+        <input class="search-box" type="text" placeholder="🔍 Search name, state..." oninput="filterMembers(this.value)"/>
+        <button class="btn-download" onclick="downloadCSV()">⬇ Download CSV</button>
+        <button class="btn-download" style="background:var(--gold)" onclick="downloadPDF()">⬇ Download PDF</button>
+      </div>
+    </div>
+    <div id="gform-linked-notice" style="display:none;background:rgba(26,107,58,0.08);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--green-dark);">
+      📎 Google Form connected. Members who fill the form will appear here automatically.
+      <a id="gform-open-link" href="#" target="_blank" style="color:var(--green);font-weight:600;margin-left:8px;">Open Form ↗</a>
+    </div>
+    <div class="members-grid" id="members-grid"></div>
+  </div>
+</div>
+
+<!-- SETUP GUIDE -->
+<div id="view-setup" class="view">
+  <div class="guide-container">
+    <h2>Setup Guide</h2>
+    <p class="subtitle">Follow these steps to go fully live. Everything is <strong>free</strong> and uses Google's tools. Submissions auto-save to a Google Sheet only your executives can access, and you get birthday email alerts every morning.</p>
+
+    <div class="step-block">
+      <div class="step-num">Step 01 — Create Your Google Form</div>
+      <h3>Build the member registration form</h3>
+      <p>Go to <strong>forms.google.com</strong> → New Form → Title it <em>"CMDA 2k29 UI — Class Directory"</em>. Add a description: <em>"Caring for the whole man: spirit, soul and body — 1 Thess. 5:23"</em>. Add these fields in this exact order:</p>
+      <ul style="margin-top:10px;">
+        <li>Full Name — Short answer (Required)</li>
+        <li>Nickname / Alias — Short answer</li>
+        <li>Date of Birth — Date (Required)</li>
+        <li>Gender — Multiple choice (Male / Female / Prefer not to say)</li>
+        <li>Marital Status — Dropdown</li>
+        <li>Phone Number — Short answer (Required)</li>
+        <li>Email Address — Short answer (Required)</li>
+        <li>WhatsApp Number — Short answer</li>
+        <li>Emergency Contact (Name & Phone) — Short answer</li>
+        <li>State of Origin — Dropdown (all 36 states + FCT)</li>
+        <li>LGA of Origin — Short answer</li>
+        <li>Current City / Location — Short answer</li>
+        <li>Matric Number — Short answer</li>
+        <li>Hall of Residence — Short answer</li>
+        <li>Specialty / Career Aspiration — Paragraph</li>
+        <li>Fun Fact / Hobbies — Paragraph</li>
+        <li>Profile Photo — File upload (set max file size to 5MB, image files only)</li>
+      </ul>
+      <div class="alert-box">💡 <strong>Tip:</strong> After creating the form, click the <em>Settings</em> tab → uncheck "Collect email addresses" if you don't want Google accounts required, so any member with a link can fill it.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">Step 02 — Link to Google Sheets (Auto-save)</div>
+      <h3>Every submission saves automatically</h3>
+      <p>In your form, click the <strong>Responses</strong> tab → click the green Sheets icon → <em>Create a new spreadsheet</em>. Name it <em>"CMDA 2k29 UI — Directory (PRIVATE)"</em>.</p>
+      <p style="margin-top:8px;">Now click <strong>Share</strong> on the spreadsheet → add your executives' Gmail addresses as <em>Editors</em>. They can view/edit anytime from any device. <strong>Never share the sheet with non-executives.</strong></p>
+      <div class="alert-box">✅ From this moment, every form submission appears as a new row in the sheet — automatically, in real time, with no extra steps.</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">Step 03 — Birthday Alert Script (Runs Every Morning)</div>
+      <h3>Get emailed 1 day before every birthday</h3>
+      <p>In your Google Sheet: click <strong>Extensions → Apps Script</strong>. Delete all existing code and paste the script below exactly. Then click <strong>Run → setup()</strong> once to activate the daily trigger.</p>
+      <div class="code-block" id="birthday-script">// ============================================================
+// CMDA 2k29 UI — Birthday Alert Script
+// Sends an email 1 day before a member's birthday, every morning
+// ============================================================
+
+function checkBirthdays() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet()
+                .getSheets()[0];
+  var data  = sheet.getDataRange().getValues();
+
+  var today    = new Date();
+  var tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  var tmMonth = tomorrow.getMonth() + 1;  // 1-12
+  var tmDay   = tomorrow.getDate();
+
+  // ⚠️ ADJUST THIS INDEX if Date of Birth is not in column C (index 2)
+  // Column A = index 0, B = 1, C = 2, D = 3 ...
+  var DOB_COL  = 2;   // Date of Birth column
+  var NAME_COL = 0;   // Full Name column
+  var PHONE_COL= 5;   // Phone Number column
+  var EMAIL_COL= 6;   // Email Address column
+
+  var celebrants = [];
+
+  for (var i = 1; i < data.length; i++) {
+    var row = data[i];
+    var raw = row[DOB_COL];
+    if (!raw) continue;
+    var dob = new Date(raw);
+    if (isNaN(dob.getTime())) continue;
+
+    if ((dob.getMonth() + 1) === tmMonth && dob.getDate() === tmDay) {
+      celebrants.push({
+        name:  row[NAME_COL]  || "(No name)",
+        phone: row[PHONE_COL] || "—",
+        email: row[EMAIL_COL] || "—"
+      });
+    }
+  }
+
+  if (celebrants.length === 0) return; // No birthday tomorrow
+
+  var dateStr = tomorrow.toDateString();
+  var subject = "🎂 CMDA 2k29 UI — Birthday Tomorrow! (" + dateStr + ")";
+
+  var body = "Greetings General Secretary,\n\n"
+    + "The following classmate(s) celebrate their birthday TOMORROW, "
+    + dateStr + ":\n\n";
+
+  celebrants.forEach(function(m) {
+    body += "━━━━━━━━━━━━━━━━━━━━\n";
+    body += "👤 " + m.name  + "\n";
+    body += "📞 " + m.phone + "\n";
+    body += "✉️  " + m.email + "\n\n";
+  });
+
+  body += "━━━━━━━━━━━━━━━━━━━━\n";
+  body += "Remember to celebrate them on behalf of the class!\n\n";
+  body += "— CMDA 2k29 UI Automated System\n";
+  body += "\"Caring for the whole man: spirit, soul and body\" — 1 Thess. 5:23";
+
+  MailApp.sendEmail({
+    to:      Session.getActiveUser().getEmail(),
+    subject: subject,
+    body:    body
+  });
+}
+
+// ─── Run setup() ONCE to activate the daily trigger ────────
+function setup() {
+  // Remove existing triggers first (avoid duplicates)
+  var triggers = ScriptApp.getProjectTriggers();
+  triggers.forEach(function(t) { ScriptApp.deleteTrigger(t); });
+
+  // Create new daily trigger at 7:00 AM
+  ScriptApp.newTrigger('checkBirthdays')
+    .timeBased()
+    .everyDays(1)
+    .atHour(7)
+    .create();
+
+  Logger.log("✅ Birthday alert trigger set! Runs daily at 7am.");
+}</div>
+      <button class="copy-btn" onclick="copyScript('birthday-script',this)">📋 Copy Script</button>
+      <div class="alert-box" style="margin-top:14px;">
+        ⚠️ <strong>Important:</strong> The column index numbers (DOB_COL, NAME_COL, etc.) match the order of fields in your Google Form. If you add or remove fields, update these numbers. Column A = 0, B = 1, C = 2, D = 3, and so on.
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">Step 04 — Grant Permissions & Activate</div>
+      <h3>One-time activation</h3>
+      <ul>
+        <li>After pasting the script, click <strong>Save (💾)</strong></li>
+        <li>Select <strong>setup</strong> from the function dropdown → click <strong>▶ Run</strong></li>
+        <li>Google will ask for permission — click <strong>Review permissions → Allow</strong></li>
+        <li>You'll see "Birthday alert trigger set!" in the Logs panel</li>
+        <li>That's it — you'll receive an email every morning a birthday is due the next day</li>
+      </ul>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">Step 05 — Download the Directory Anytime</div>
+      <h3>Export member data as CSV or PDF</h3>
+      <p>From your Google Sheet anytime: <strong>File → Download → CSV</strong> for a spreadsheet, or <strong>File → Download → PDF</strong> for a printable directory. You can also use the <strong>Download CSV</strong> and <strong>Download PDF</strong> buttons in the Members tab of this page for data entered through this prototype.</p>
+    </div>
+
+    <div class="step-block">
+      <div class="step-num">Step 06 — Share Your Form Link</div>
+      <h3>Get members to fill in their details</h3>
+      <p>In Google Forms, click <strong>Send → 🔗 Link icon → Copy</strong>. Share it in your CMDA WhatsApp group. For a cleaner link, use <strong>bit.ly</strong> to shorten it — e.g. <em>bit.ly/cmda2k29ui</em>.</p>
+      <p style="margin-top:8px;">You can also paste the link in the <strong>Join Directory</strong> tab of this page — it will show members a direct button to your form.</p>
+    </div>
+
+    <div class="step-block" style="border-left-color:var(--gold);">
+      <div class="step-num" style="color:var(--gold);">Executive Tip</div>
+      <h3>Keep the Sheet private — share this page publicly</h3>
+      <p>This HTML page is safe to share with all members — it lets them fill in their details and browse the directory. The actual data in Google Sheets is only accessible to those you share the sheet with. This separation is your security layer.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBER MODAL -->
+<div class="modal-overlay" id="member-modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-banner">
+      <div class="modal-av" id="modal-av"></div>
+      <button class="modal-close" onclick="document.getElementById('member-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-nick" id="modal-nick"></div>
+      <div class="modal-grid">
+        <div class="mf"><label>📞 Phone</label><p id="m-phone"></p></div>
+        <div class="mf"><label>✉️ Email</label><p id="m-email"></p></div>
+        <div class="mf"><label>🎂 Birthday</label><p id="m-dob"></p></div>
+        <div class="mf"><label>📍 State</label><p id="m-state"></p></div>
+        <div class="mf"><label>🏙️ Location</label><p id="m-loc"></p></div>
+        <div class="mf"><label>🏫 Hall</label><p id="m-hall"></p></div>
+        <div class="mf"><label>🆔 Matric</label><p id="m-matric"></p></div>
+        <div class="mf"><label>📱 WhatsApp</label><p id="m-wa"></p></div>
+      </div>
+      <div class="mf-full"><label>🚀 Aspiration</label><p id="m-asp"></p></div>
+      <div class="mf-full" style="margin-top:12px"><label>✨ Fun Fact</label><p id="m-fun"></p></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>CMDA 2k29 — University of Ibadan</strong><br>
+  <em>"Caring for the whole man: spirit, soul and body" — 1 Thessalonians 5:23</em><br>
+  Class Directory · Confidential · For Executive Use Only
+</footer>
+
+<script>
+// ── DATA ──
+let members = JSON.parse(localStorage.getItem('cmda2k29_v2') || '[]');
+let gformURL = localStorage.getItem('cmda2k29_gform') || '';
+
+// ── NAV ──
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  ['home','form','directory','setup'].forEach((v,i)=>{
+    if(v===id) document.querySelectorAll('.nav-tab')[i].classList.add('active');
+  });
+  if(id==='directory') renderDirectory(members);
+  if(id==='home') updateStats();
+  if(id==='form') initFormBanner();
+}
+
+// ── GOOGLE FORM BANNER ──
+function initFormBanner(){
+  if(gformURL){
+    document.getElementById('gform-url').value = gformURL;
+    document.getElementById('gform-status').textContent = '✅ Google Form connected: '+gformURL;
+  }
+}
+function saveGformLink(){
+  const url = document.getElementById('gform-url').value.trim();
+  if(!url){ alert('Please enter a valid Google Form URL.'); return; }
+  gformURL = url;
+  localStorage.setItem('cmda2k29_gform', url);
+  document.getElementById('gform-status').textContent = '✅ Connected: '+url;
+  alert('Google Form link saved! Members can now be directed to your form.');
+}
+
+// ── PHOTO PREVIEW ──
+function previewPhoto(e){
+  const file = e.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const p = document.getElementById('photo-preview');
+    p.src = ev.target.result; p.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── SUBMIT ──
+function submitForm(){
+  const fullname=document.getElementById('f-fullname').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const dob=document.getElementById('f-dob').value;
+  const state=document.getElementById('f-state').value;
+  if(!fullname||!phone||!email||!dob||!state){
+    alert('Please fill in all required fields (marked *).');return;
+  }
+  const photoSrc=document.getElementById('photo-preview').src;
+  const m={
+    id:Date.now(),fullname,
+    nickname:document.getElementById('f-nickname').value.trim(),
+    dob,gender:document.getElementById('f-gender').value,
+    marital:document.getElementById('f-marital').value,
+    phone,email,
+    whatsapp:document.getElementById('f-whatsapp').value.trim(),
+    emergency:document.getElementById('f-emergency').value.trim(),
+    state,lga:document.getElementById('f-lga').value.trim(),
+    location:document.getElementById('f-location').value.trim(),
+    matric:document.getElementById('f-matric').value.trim(),
+    hall:document.getElementById('f-hall').value.trim(),
+    aspiration:document.getElementById('f-aspiration').value.trim(),
+    fun:document.getElementById('f-fun').value.trim(),
+    photo:(photoSrc&&photoSrc.startsWith('data:'))?photoSrc:null
+  };
+  members.push(m);
+  localStorage.setItem('cmda2k29_v2',JSON.stringify(members));
+  document.getElementById('main-form').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  updateStats();
+}
+
+// ── DIRECTORY ──
+function renderDirectory(list){
+  const grid=document.getElementById('members-grid');
+  const notice=document.getElementById('gform-linked-notice');
+  if(gformURL){
+    notice.style.display='block';
+    document.getElementById('gform-open-link').href=gformURL;
+  } else { notice.style.display='none'; }
+
+  if(!list.length){
+    grid.innerHTML=`<div class="empty-state">
+      <div class="icon">📂</div><h3>No members yet</h3>
+      <p>Be the first to add your details, or connect your Google Form above.</p>
+      <button onclick="showView('form')" style="margin-top:14px;background:var(--green);color:white;border:none;padding:10px 20px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600">Add My Details</button>
+    </div>`;return;
+  }
+  grid.innerHTML=list.map(m=>{
+    const ini=m.fullname.split(' ').map(n=>n[0]).slice(0,2).join('');
+    const soon=bdaySoon(m.dob,7);
+    return`<div class="member-card" onclick="openModal(${m.id})">
+      <div class="card-top">
+        ${soon?'<div class="bday-ribbon" style="display:block">🎂 Birthday Soon</div>':''}
+        <div class="card-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover;">`:'<span style="font-size:20px">✝</span>'}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">${m.fullname}</div>
+        <div class="card-nick">${m.nickname?'"'+m.nickname+'"':'&nbsp;'}</div>
+        <div class="card-meta">
+          <span>📍 ${m.state||'—'}</span>
+          <span>🏙️ ${m.location||'—'}</span>
+          <span>🎂 ${m.dob?fmtDob(m.dob):'—'}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function filterMembers(q){
+  q=q.toLowerCase();
+  renderDirectory(members.filter(m=>
+    m.fullname.toLowerCase().includes(q)||
+    (m.nickname||'').toLowerCase().includes(q)||
+    (m.state||'').toLowerCase().includes(q)||
+    (m.location||'').toLowerCase().includes(q)
+  ));
+}
+function fmtDob(d){
+  const dt=new Date(d+'T00:00:00');
+  return dt.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+}
+function bdaySoon(dob,days){
+  if(!dob)return false;
+  const today=new Date();const d=new Date(dob+'T00:00:00');
+  const next=new Date(today.getFullYear(),d.getMonth(),d.getDate());
+  if(next<today)next.setFullYear(today.getFullYear()+1);
+  return(next-today)/86400000<=days;
+}
+
+// ── MODAL ──
+function openModal(id){
+  const m=members.find(x=>x.id===id);if(!m)return;
+  const ini=m.fullname.split(' ').map(n=>n[0]).slice(0,2).join('');
+  const av=document.getElementById('modal-av');
+  av.innerHTML=m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`:`<span>${ini}</span>`;
+  document.getElementById('modal-name').textContent=m.fullname;
+  document.getElementById('modal-nick').textContent=m.nickname?'"'+m.nickname+'"':'';
+  document.getElementById('m-phone').textContent=m.phone||'—';
+  document.getElementById('m-email').textContent=m.email||'—';
+  document.getElementById('m-dob').textContent=m.dob?fmtDob(m.dob):'—';
+  document.getElementById('m-state').textContent=m.state||'—';
+  document.getElementById('m-loc').textContent=m.location||'—';
+  document.getElementById('m-hall').textContent=m.hall||'—';
+  document.getElementById('m-matric').textContent=m.matric||'—';
+  document.getElementById('m-wa').textContent=m.whatsapp||m.phone||'—';
+  document.getElementById('m-asp').textContent=m.aspiration||'—';
+  document.getElementById('m-fun').textContent=m.fun||'—';
+  document.getElementById('member-modal').classList.add('open');
+}
+function closeModal(e){if(e.target.id==='member-modal')document.getElementById('member-modal').classList.remove('open')}
+
+// ── STATS ──
+function updateStats(){
+  document.getElementById('member-count').textContent=members.length;
+  document.getElementById('state-count').textContent=new Set(members.map(m=>m.state).filter(Boolean)).size;
+  document.getElementById('bday-count').textContent=members.filter(m=>bdaySoon(m.dob,7)).length;
+}
+
+// ── DOWNLOAD CSV ──
+function downloadCSV(){
+  if(!members.length){alert('No members to download yet.');return;}
+  const headers=['Full Name','Nickname','Date of Birth','Gender','Marital Status','Phone','Email','WhatsApp','Emergency Contact','State','LGA','Location','Matric No.','Hall','Aspiration','Fun Fact'];
+  const rows=members.map(m=>[
+    m.fullname,m.nickname,m.dob,m.gender,m.marital,
+    m.phone,m.email,m.whatsapp,m.emergency,
+    m.state,m.lga,m.location,m.matric,m.hall,
+    m.aspiration,m.fun
+  ].map(v=>'"'+(v||'').replace(/"/g,'""')+'"').join(','));
+  const csv=[headers.join(','),...rows].join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='CMDA_2k29_UI_Directory.csv';a.click();
+}
+
+// ── DOWNLOAD PDF ──
+function downloadPDF(){
+  if(!members.length){alert('No members to download yet.');return;}
+  const win=window.open('','_blank');
+  const rows=members.map((m,i)=>`
+    <tr style="background:${i%2?'#F6FAF7':'white'}">
+      <td>${m.fullname}</td><td>${m.nickname||'—'}</td>
+      <td>${m.dob?fmtDob(m.dob):'—'}</td><td>${m.state||'—'}</td>
+      <td>${m.phone||'—'}</td><td>${m.email||'—'}</td>
+    </tr>`).join('');
+  win.document.write(`<!DOCTYPE html><html><head><title>CMDA 2k29 UI — Directory</title>
+  <style>body{font-family:sans-serif;padding:30px;color:#0F3D22}
+  h1{color:#1A6B3A;font-size:22px;margin-bottom:4px}
+  .sub{color:#5A7060;font-size:13px;margin-bottom:6px}
+  .motto{font-style:italic;color:#5A7060;font-size:12px;margin-bottom:20px}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{background:#1A6B3A;color:white;padding:8px;text-align:left}
+  td{padding:7px 8px;border-bottom:1px solid #D0E4D8}</style></head>
+  <body><h1>CMDA 2k29 — University of Ibadan</h1>
+  <div class="sub">Class Directory · Confidential · Generated ${new Date().toDateString()}</div>
+  <div class="motto">"Caring for the whole man: spirit, soul and body" — 1 Thessalonians 5:23</div>
+  <table><thead><tr><th>Full Name</th><th>Nickname</th><th>Birthday</th><th>State</th><th>Phone</th><th>Email</th></tr></thead>
+  <tbody>${rows}</tbody></table></body></html>`);
+  win.document.close();
+  setTimeout(()=>win.print(),500);
+}
+
+// ── COPY SCRIPT ──
+function copyScript(id,btn){
+  navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{
+    btn.textContent='✅ Copied!';
+    setTimeout(()=>btn.textContent='📋 Copy Script',2000);
+  });
+}
+
+// ── INIT ──
+updateStats();
+if(gformURL) initFormBanner();
+</script>
+</body>
+</html>
